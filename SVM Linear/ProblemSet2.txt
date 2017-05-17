@@ -1,0 +1,31 @@
+On my honor, I pledge that I have not violated the provisions of the NJIT Academic Honor Code. All work that I have submitted for this assignment is my own,unless clearly indicated otherwise with a citation to the source.
+
+(1) Instructions:
+
+- The files A.csv and B.csv (downloaded from Moodle saved as a CSV file) should be placed in the same folder in the AFS directory.
+- The logic of the Linear program is written in Matlab saved in the directory as PS2_mr488.m
+
+(2) Description of Approach:
+
+- The files A.csv and B.csv are loaded in A1 and B1 matrices and the values are split for Training and Testing Datasets.
+- The size of the matrix is captured in the variables p,q,r for Training sets and s,t,u for Testing sets.
+- The zero matrix Z, Column Vector and Identity matrices are defined for the above vectors for both the Training and Testing sets.
+- Similarly we initialize the Lower Bound,Upper Bound where the solution lies between lb <= vector <= ub along with the declaration of linear equality                constraints Aeq,Beq
+- Finally, we construct the Classifier for training data set based on the basis of Linear programming satisfying the below condition:
+  C transpose x which is subject to A.x <= B which are based on calculating the values of omega,gamma,y and z and are filled with the matrix directly assigning       the values in Matlab as:
+  Zxy- zeros(x,y)
+  ex- ones(x,1)
+  Ix - eye(x)
+- The dual problem could also be solved using minimizing C transpose x and subject to A(transpose).x <= B. 
+- The linprog function is used to calculate the values of omega and gamma which could be used to compute the Hyperplane and classify the points accordingly.
+- The above process is repeated for the Test data sets that are used to compute the error rate of the classified vs unclassified data sets that are used to           calculate the Normalization which are related to two matrices and vectors which are based on the below formula:
+  Aw >= gamma.e + e
+  Hence calculation of Aw-gamma must be >= 0 and all the values extracted must be positive and must lie in the open half space and the misclassified points           could be identified easily.
+- Similarly we can calculate Bw <= gamma.e - e and Bw-gamma <=0 and the values mapped must be negative and must lie in the other half space of the plane   and        misclassified points could be identified accordingly.
+- The graphs could be plotted from the omega values of both the datasets.
+- The accuracy for the corresponding training and test data are calculated.
+
+(3) Algorithms Used:
+
+- Linear Programming (Primal Problem) - Optimization of linear objective functions related to linear equality and inequality constants.and keys are mapped based    on the input and iteration order is maintained by Insertion order.
+- Linear Programming (Dual Problem) - The Duality in Linear Programming states that every linear programming problem has another linear programming problem related   to it and thus can be derived from it. The original linear programming problem is called “Primal,” while the derived linear problem is called “Dual.”
